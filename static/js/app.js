@@ -15,7 +15,8 @@ let notFound = d3.select("#table-area").append("h2")
 // Initial table creation
 
 // iterate through tableData and add new table row for each sighting
-tableData.forEach(sighting => {
+function resetTable() {
+    tableData.forEach(sighting => {
 
     // add new row for each sighting
     let row = table.append("tr");
@@ -27,7 +28,10 @@ tableData.forEach(sighting => {
         // add new td text for each value in the array
         row.append("td").text(sightingValue); 
     })
-})
+    })
+}
+
+resetTable()
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -46,6 +50,13 @@ button.on("click", function() {
 
     // filter data based on input date
     let filteredDates = tableData.filter(sighting => sighting.datetime === inputDateValue);
+
+    // exit function if date field is left empty
+    if (inputDateValue.length === 0) {
+        table.html("");
+        resetTable();
+        return;
+    }
 
     // clear table
     table.html("")
