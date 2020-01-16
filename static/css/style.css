@@ -3,12 +3,48 @@
   font-family: Ubuntu, sans-serif;
 }
 
+/* background color */
 html,
 body {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-color: #324a7f;
 }
+
+/* change navbar color */
+.navbar-default {
+  background-color: #5f7bbd00;
+}
+
+/* filter header color */
+.panel-default > .panel-heading {
+  background-color: #4e6290;
+}
+
+/* Remove space at bottom of form */
+.form-group{
+  margin-bottom: 0px;
+}
+
+.input-group-append {
+  background-color: #4e6290;
+}
+
+.btn-default {
+  background-color: #8e929c;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: #7181a7;
+}
+
+
+/* filter body color */
+.list-group-item {
+  background-color: #7181a7;
+}
+
 
 /* The wrapper contains all of the page's content besides the footer, which is pushed to the bottom of the page */
 .wrapper {
@@ -57,8 +93,10 @@ body {
   margin-top: 50px;
 }
 
+/* bottom of form color */
 .filters .panel-body {
   padding: 0;
+  background-color: #7181a7;
 }
 
 .filters {

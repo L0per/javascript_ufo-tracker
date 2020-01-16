@@ -32,7 +32,6 @@
             <div class="panel panel-default">
               <div class="panel-heading">Filter Search</div>
               <div class="panel-body">
-                <form>
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
@@ -44,20 +43,22 @@
                         <input class="form-control" id="city" type="text" placeholder="san diego">
                       </li>
                       <li class="filter list-group-item">
-                        <label for="City">State</label>
+                        <label for="State">State</label>
                         <input class="form-control" id="state" type="text" placeholder="ca">
                       </li>
                       <li class="filter list-group-item">
-                        <label for="City">Country</label>
+                        <label for="Country">Country</label>
                         <input class="form-control" id="country" type="text" placeholder="us">
                       </li>
                       <li class="filter list-group-item">
-                        <label for="City">Shape</label>
-                        <input class="form-control" id="state" type="text" placeholder="ca">
+                        <label for="Shape">Shape</label>
+                        <input class="form-control" id="shape" type="text" placeholder="circle">
                       </li>
                     </ul>
                   </div>
-                  <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                  <div class="input-group-append">
+                    <button id="filter-btn" type="button" class="btn btn-default btn-block">Filter Table</button>
+                  </div>
                 </form>
               </div>
             </div>

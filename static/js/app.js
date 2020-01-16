@@ -1,5 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Data and d3 selections
+// data and d3 selections
+////////////////////////////////////////////////////////////////////////////////
 
 // from data.js
 let tableData = data;
@@ -12,7 +13,8 @@ let notFound = d3.select("#table-area").append("h2")
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Initial table creation
+// initial table creation
+////////////////////////////////////////////////////////////////////////////////
 
 // iterate through tableData and add new table row for each sighting
 function resetTable() {
@@ -31,11 +33,13 @@ function resetTable() {
     })
 }
 
+// create initial table
 resetTable()
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Filtering table
+// filter table
+////////////////////////////////////////////////////////////////////////////////
 
 // select the filter button
 let button = d3.select("#filter-btn");
@@ -43,19 +47,47 @@ let button = d3.select("#filter-btn");
 // trigger when filter button is clicked
 button.on("click", function() {
 
-    // select date input field
-    let inputDate = d3.select("#datetime");
-    // select date input field values
-    let inputDateValue = inputDate.property("value");
+    // select input values
+    let inputDate = d3.select("#datetime").property("value");
+    let inputCity = d3.select("#city").property("value");
+    let inputState = d3.select("#state").property("value");
+    let inputCountry = d3.select("#country").property("value");
+    let inputShape = d3.select("#shape").property("value");
 
-    // filter data based on input date
-    let filteredDates = tableData.filter(sighting => sighting.datetime === inputDateValue);
+    // create filtered data variable for checking length
+    var filteredData = {}
 
-    // exit function if date field is left empty
-    if (inputDateValue.length === 0) {
-        table.html("");
-        resetTable();
-        return;
+    // filter data if values are in respective field
+    if (inputDate.length > 0) {
+        var filteredData = tableData.filter(sighting => sighting.datetime === inputDate);
+    }
+
+    if (inputCity.length > 0 && filteredData.length > 0) {
+        var filteredData = filteredData.filter(sighting => sighting.city === inputCity);
+    }
+    else if (inputCity.length > 0) {
+        var filteredData = tableData.filter(sighting => sighting.city === inputCity);
+    }
+
+    if (inputState.length > 0 && filteredData.length > 0) {
+        var filteredData = filteredData.filter(sighting => sighting.state === inputState);
+    }
+    else if (inputState.length > 0) {
+        var filteredData = tableData.filter(sighting => sighting.state === inputState);   
+    }
+
+    if (inputCountry.length > 0 && filteredData.length > 0) {
+        var filteredData = filteredData.filter(sighting => sighting.country === inputCountry);
+    }
+    else if (inputCountry.length > 0) {
+        var filteredData = tableData.filter(sighting => sighting.country === inputCountry);
+    }
+
+    if (inputShape.length > 0 && filteredData.length > 0) {
+        var filteredData = filteredData.filter(sighting => sighting.shape === inputShape);
+    }
+    else if (inputShape.length > 0) {
+        var filteredData = tableData.filter(sighting => sighting.shape === inputShape);
     }
 
     // clear table
@@ -63,25 +95,32 @@ button.on("click", function() {
     // clear not found text
     notFound.html("")
 
-    // //Refresh table
-    filteredDates.forEach(sighting => {
+    // refresh table 
+    if (filteredData.length > 0) {
+        filteredData.forEach(sighting => {
 
-        // add new row for each sighting
-        let row = table.append("tr");
-        // create array contianing values for each sighting
-        let sightingEntry = Object.values(sighting);
-    
-        // iterate though each sighting value
-        sightingEntry.forEach(sightingValue => {
-            // add new td text for each value in the array
-            row.append("td").text(sightingValue); 
+            // add new row for each sighting
+            let row = table.append("tr");
+            // create array contianing values for each sighting
+            let sightingEntry = Object.values(sighting);
+        
+            // iterate though each sighting value
+            sightingEntry.forEach(sightingValue => {
+                // add new td text for each value in the array
+                row.append("td").text(sightingValue); 
+            })
         })
-    })
-
+    }
+    
     // text if no results found
-    if (filteredDates.length === 0) {
-        notFound.text("No sightings found!")
+    if (filteredData.length === 0) {
+        notFound.text("No sightings found!");
     }
 
+    // reset table if all fields are empty
+    let fieldsLength = inputDate.length + inputCity.length + inputState.length + inputCountry.length + inputShape.length;
+    if (fieldsLength === 0) {
+        resetTable();
+    }
 })
 
