@@ -8,7 +8,7 @@ The website can be viewed here: https://l0per.github.io/javascript_ufo-tracker/
 
 `static` = Javascript and CSS files, along with example JS object UFO data
 
-## Screenshot
+## Screenshots
 ![top](https://github.com/L0per/javascript_ufo-tracker/blob/master/images/page_top.PNG?raw=true)
 
 * Filter example:
