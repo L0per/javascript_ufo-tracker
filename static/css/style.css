@@ -138,8 +138,8 @@ select {
   background: black;
   background-image: url("../images/thirdkind.jpg");
   background-attachment: fixed;
-  background-position: bottom center;
-  background-size: cover;
+  background-position: top;
+  background-size: auto;
 }
 
 .hero h1 {
