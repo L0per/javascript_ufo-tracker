@@ -1,7 +1,7 @@
 # Purpose
 Create a website that displays data based on user filter requirements.
 
-The website can be viewed here: https://l0per.github.io/javascript_ufo-tracker/
+The website can be viewed here: https://l0per.github.io/ufo-sightings/
 
 ## Files
 `index.html` = Website
